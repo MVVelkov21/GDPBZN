@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GDPBZN.PLL", "GDPBZN.PLL\GDPBZN.PLL.csproj", "{894FE87E-FA45-40A0-95DE-C5D302DD4388}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GDPBZN.BLL", "GDPBZN.BLL\GDPBZN.BLL.csproj", "{A419F814-8B36-4677-8CAF-DFE02A6D2ACF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GDPBZN.DAL", "GDPBZN.DAL\GDPBZN.DAL.csproj", "{D44E29C0-16FD-4FC9-B12F-DE7DDA95024E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{894FE87E-FA45-40A0-95DE-C5D302DD4388}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{894FE87E-FA45-40A0-95DE-C5D302DD4388}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{894FE87E-FA45-40A0-95DE-C5D302DD4388}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{894FE87E-FA45-40A0-95DE-C5D302DD4388}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A419F814-8B36-4677-8CAF-DFE02A6D2ACF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A419F814-8B36-4677-8CAF-DFE02A6D2ACF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A419F814-8B36-4677-8CAF-DFE02A6D2ACF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A419F814-8B36-4677-8CAF-DFE02A6D2ACF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D44E29C0-16FD-4FC9-B12F-DE7DDA95024E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D44E29C0-16FD-4FC9-B12F-DE7DDA95024E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D44E29C0-16FD-4FC9-B12F-DE7DDA95024E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D44E29C0-16FD-4FC9-B12F-DE7DDA95024E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

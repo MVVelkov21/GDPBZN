@@ -1,0 +1,15 @@
+C:\Users\admin\RiderProjects\GDPBZN\GDPBZN.BLL\bin\Debug\net8.0\GDPBZN.BLL.deps.json
+C:\Users\admin\RiderProjects\GDPBZN\GDPBZN.BLL\bin\Debug\net8.0\GDPBZN.BLL.dll
+C:\Users\admin\RiderProjects\GDPBZN\GDPBZN.BLL\bin\Debug\net8.0\GDPBZN.BLL.pdb
+C:\Users\admin\RiderProjects\GDPBZN\GDPBZN.BLL\bin\Debug\net8.0\GDPBZN.DAL.dll
+C:\Users\admin\RiderProjects\GDPBZN\GDPBZN.BLL\bin\Debug\net8.0\GDPBZN.DAL.pdb
+C:\Users\admin\RiderProjects\GDPBZN\GDPBZN.BLL\obj\Debug\net8.0\GDPBZN.BLL.csproj.AssemblyReference.cache
+C:\Users\admin\RiderProjects\GDPBZN\GDPBZN.BLL\obj\Debug\net8.0\GDPBZN.BLL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\RiderProjects\GDPBZN\GDPBZN.BLL\obj\Debug\net8.0\GDPBZN.BLL.AssemblyInfoInputs.cache
+C:\Users\admin\RiderProjects\GDPBZN\GDPBZN.BLL\obj\Debug\net8.0\GDPBZN.BLL.AssemblyInfo.cs
+C:\Users\admin\RiderProjects\GDPBZN\GDPBZN.BLL\obj\Debug\net8.0\GDPBZN.BLL.csproj.CoreCompileInputs.cache
+C:\Users\admin\RiderProjects\GDPBZN\GDPBZN.BLL\obj\Debug\net8.0\GDPBZN.BLL.csproj.Up2Date
+C:\Users\admin\RiderProjects\GDPBZN\GDPBZN.BLL\obj\Debug\net8.0\GDPBZN.BLL.dll
+C:\Users\admin\RiderProjects\GDPBZN\GDPBZN.BLL\obj\Debug\net8.0\refint\GDPBZN.BLL.dll
+C:\Users\admin\RiderProjects\GDPBZN\GDPBZN.BLL\obj\Debug\net8.0\GDPBZN.BLL.pdb
+C:\Users\admin\RiderProjects\GDPBZN\GDPBZN.BLL\obj\Debug\net8.0\ref\GDPBZN.BLL.dll

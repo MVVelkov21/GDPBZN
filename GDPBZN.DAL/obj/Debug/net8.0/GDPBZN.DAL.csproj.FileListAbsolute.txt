@@ -1,0 +1,12 @@
+C:\Users\admin\RiderProjects\GDPBZN\GDPBZN.DAL\bin\Debug\net8.0\GDPBZN.DAL.deps.json
+C:\Users\admin\RiderProjects\GDPBZN\GDPBZN.DAL\bin\Debug\net8.0\GDPBZN.DAL.dll
+C:\Users\admin\RiderProjects\GDPBZN\GDPBZN.DAL\bin\Debug\net8.0\GDPBZN.DAL.pdb
+C:\Users\admin\RiderProjects\GDPBZN\GDPBZN.DAL\obj\Debug\net8.0\GDPBZN.DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\RiderProjects\GDPBZN\GDPBZN.DAL\obj\Debug\net8.0\GDPBZN.DAL.AssemblyInfoInputs.cache
+C:\Users\admin\RiderProjects\GDPBZN\GDPBZN.DAL\obj\Debug\net8.0\GDPBZN.DAL.AssemblyInfo.cs
+C:\Users\admin\RiderProjects\GDPBZN\GDPBZN.DAL\obj\Debug\net8.0\GDPBZN.DAL.csproj.CoreCompileInputs.cache
+C:\Users\admin\RiderProjects\GDPBZN\GDPBZN.DAL\obj\Debug\net8.0\GDPBZN.DAL.dll
+C:\Users\admin\RiderProjects\GDPBZN\GDPBZN.DAL\obj\Debug\net8.0\refint\GDPBZN.DAL.dll
+C:\Users\admin\RiderProjects\GDPBZN\GDPBZN.DAL\obj\Debug\net8.0\GDPBZN.DAL.pdb
+C:\Users\admin\RiderProjects\GDPBZN\GDPBZN.DAL\obj\Debug\net8.0\ref\GDPBZN.DAL.dll
+C:\Users\admin\RiderProjects\GDPBZN\GDPBZN.DAL\obj\Debug\net8.0\GDPBZN.DAL.csproj.AssemblyReference.cache
