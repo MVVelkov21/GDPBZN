@@ -13,3 +13,4 @@ C:\Users\admin\RiderProjects\GDPBZN\GDPBZN.BLL\obj\Debug\net8.0\GDPBZN.BLL.dll
 C:\Users\admin\RiderProjects\GDPBZN\GDPBZN.BLL\obj\Debug\net8.0\refint\GDPBZN.BLL.dll
 C:\Users\admin\RiderProjects\GDPBZN\GDPBZN.BLL\obj\Debug\net8.0\GDPBZN.BLL.pdb
 C:\Users\admin\RiderProjects\GDPBZN\GDPBZN.BLL\obj\Debug\net8.0\ref\GDPBZN.BLL.dll
+C:\Users\admin\RiderProjects\GDPBZN\GDPBZN.BLL\obj\Debug\net8.0\GDPBZN.BLL.sourcelink.json

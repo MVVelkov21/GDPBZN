@@ -10,3 +10,4 @@ C:\Users\admin\RiderProjects\GDPBZN\GDPBZN.DAL\obj\Debug\net8.0\refint\GDPBZN.DA
 C:\Users\admin\RiderProjects\GDPBZN\GDPBZN.DAL\obj\Debug\net8.0\GDPBZN.DAL.pdb
 C:\Users\admin\RiderProjects\GDPBZN\GDPBZN.DAL\obj\Debug\net8.0\ref\GDPBZN.DAL.dll
 C:\Users\admin\RiderProjects\GDPBZN\GDPBZN.DAL\obj\Debug\net8.0\GDPBZN.DAL.csproj.AssemblyReference.cache
+C:\Users\admin\RiderProjects\GDPBZN\GDPBZN.DAL\obj\Debug\net8.0\GDPBZN.DAL.sourcelink.json

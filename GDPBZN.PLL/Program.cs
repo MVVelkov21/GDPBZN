@@ -85,10 +85,12 @@ app.UseCors("default");
 app.UseSwagger();
 app.UseSwaggerUI();
 
+app.UseStaticFiles();
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
 app.MapHub<IncidentHub>("/hubs/incident");
 
+app.MapGet("/", () => Results.Redirect("/index.html"));
 app.Run();

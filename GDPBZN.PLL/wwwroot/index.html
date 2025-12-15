@@ -1,0 +1,293 @@
+﻿<!doctype html>
+<html lang="bg">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>GDPBZN • Operative Center</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="app">
+    <header class="topbar">
+        <div class="brand">
+            <div class="logo">🔥</div>
+            <div>
+                <div class="title">GDPBZN</div>
+                <div class="subtitle">Operative Center</div>
+            </div>
+        </div>
+
+        <div class="top-actions">
+            <div class="pill" id="connState">
+                <span class="dot" id="connDot"></span>
+                <span id="connText">Offline</span>
+            </div>
+
+            <div class="user">
+                <div class="avatar" id="userAvatar">?</div>
+                <div class="user-meta">
+                    <div class="user-name" id="userName">Not signed in</div>
+                    <div class="user-role" id="userRole">—</div>
+                </div>
+            </div>
+
+            <button class="btn btn-ghost" id="btnLogout" title="Logout" disabled>Logout</button>
+        </div>
+    </header>
+
+    <main class="grid">
+        <!-- Left: Login / Filters -->
+        <section class="card" id="loginCard">
+            <div class="card-header">
+                <div>
+                    <h2>Вход</h2>
+                    <p class="muted">Въведи потребител и парола, за да управляваш инциденти.</p>
+                </div>
+            </div>
+
+            <div class="form">
+                <label>Username</label>
+                <input id="username" placeholder="admin" autocomplete="username" />
+                <label>Password</label>
+                <input id="password" placeholder="admin" type="password" autocomplete="current-password" />
+                <button class="btn btn-primary" id="btnLogin">Login</button>
+                <div class="hint" id="loginStatus"></div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="muted small">
+                Tip: ако използваш Swagger – това UI ползва същите endpoints.
+            </div>
+        </section>
+
+        <!-- Middle: Incidents list -->
+        <section class="card">
+            <div class="card-header row space">
+                <div>
+                    <h2>Инциденти</h2>
+                    <p class="muted">Оперативен списък (отворени)</p>
+                </div>
+                <div class="row gap">
+                    <button class="btn btn-ghost" id="btnRefresh" disabled>Refresh</button>
+                    <button class="btn btn-primary" id="btnNewIncident" disabled>+ Нов инцидент</button>
+                </div>
+            </div>
+
+            <div class="toolbar">
+                <input id="search" class="search" placeholder="Търси по адрес / ID..." disabled />
+                <select id="statusFilter" disabled>
+                    <option value="">Всички статуси</option>
+                    <option value="New">New</option>
+                    <option value="Dispatched">Dispatched</option>
+                    <option value="OnScene">OnScene</option>
+                    <option value="InProgress">InProgress</option>
+                    <option value="Resolved">Resolved</option>
+                    <option value="Cancelled">Cancelled</option>
+                </select>
+            </div>
+
+            <div class="list" id="incidentList">
+                <div class="empty">Няма данни. Влез и натисни Refresh.</div>
+            </div>
+        </section>
+
+        <!-- Right: Details -->
+        <section class="card details">
+            <div class="card-header row space">
+                <div>
+                    <h2>Детайли</h2>
+                    <p class="muted" id="detailsSubtitle">Избери инцидент от списъка</p>
+                </div>
+                <div class="row gap">
+                    <button class="btn btn-ghost" id="btnJoin" disabled>Join realtime</button>
+                    <button class="btn btn-ghost" id="btnLeave" disabled>Leave</button>
+                </div>
+            </div>
+
+            <div class="tabs">
+                <button class="tab active" data-tab="overview">Overview</button>
+                <button class="tab" data-tab="chat">Chat</button>
+                <button class="tab" data-tab="tasks">Tasks</button>
+            </div>
+
+            <div class="tabpanes">
+                <!-- Overview -->
+                <div class="pane active" id="pane-overview">
+                    <div class="kv" id="kv"></div>
+
+                    <div class="split">
+                        <div>
+                            <h3>Екипи</h3>
+                            <div class="chips" id="units"></div>
+                        </div>
+                        <div>
+                            <h3>Опасни вещества</h3>
+                            <div class="chips" id="hazards"></div>
+                        </div>
+                    </div>
+
+                    <div class="split">
+                        <div>
+                            <h3>Ресурси</h3>
+                            <div class="mini-list" id="resources"></div>
+                        </div>
+                        <div>
+                            <h3>Анотации</h3>
+                            <div class="mini-list" id="annotations"></div>
+                        </div>
+                    </div>
+
+                    <div class="split">
+                        <div>
+                            <h3>GPS</h3>
+                            <div class="muted small">За demo показваме последни съобщения за vehicle.location (ако има).</div>
+                            <div class="mini-list" id="gpsFeed"></div>
+                        </div>
+                        <div>
+                            <h3>SOS</h3>
+                            <div class="muted small">Показва последни emergency.new сигнали.</div>
+                            <div class="mini-list" id="sosFeed"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat -->
+                <div class="pane" id="pane-chat">
+                    <div class="chat">
+                        <div class="chat-log" id="chatLog"></div>
+                        <div class="chat-compose">
+                            <input id="chatText" placeholder="Съобщение..." disabled />
+                            <button class="btn btn-primary" id="btnSendChat" disabled>Send</button>
+                        </div>
+                        <div class="hint muted small">Realtime: chat.new ще се появява тук.</div>
+                    </div>
+                </div>
+
+                <!-- Tasks -->
+                <div class="pane" id="pane-tasks">
+                    <div class="row space">
+                        <div>
+                            <h3>Задачи</h3>
+                            <div class="muted small">Realtime: task.created</div>
+                        </div>
+                        <button class="btn btn-primary" id="btnNewTask" disabled>+ Нова задача</button>
+                    </div>
+                    <div class="mini-list" id="taskList"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<!-- Modal: New Incident -->
+<div class="modal-backdrop" id="modalIncident">
+    <div class="modal">
+        <div class="modal-header">
+            <div>
+                <h2>Нов инцидент</h2>
+                <p class="muted">Създай инцидент и изпрати екип.</p>
+            </div>
+            <button class="btn btn-ghost" id="btnCloseIncident">✕</button>
+        </div>
+
+        <div class="modal-body">
+            <div class="grid2">
+                <div>
+                    <label>Type</label>
+                    <select id="incType">
+                        <option value="Fire">Fire</option>
+                        <option value="Rescue">Rescue</option>
+                        <option value="Hazmat">Hazmat</option>
+                        <option value="TrafficAccident">TrafficAccident</option>
+                        <option value="Flood">Flood</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div>
+                    <label>SourceChannel</label>
+                    <input id="incSource" value="112" />
+                </div>
+            </div>
+
+            <label>Address</label>
+            <input id="incAddress" placeholder="гр. София, ..." />
+
+            <div class="grid2">
+                <div>
+                    <label>Lat</label>
+                    <input id="incLat" placeholder="42.6977" />
+                </div>
+                <div>
+                    <label>Lng</label>
+                    <input id="incLng" placeholder="23.3219" />
+                </div>
+            </div>
+
+            <label>Description</label>
+            <textarea id="incDesc" rows="3" placeholder="Кратко описание..."></textarea>
+
+            <div class="grid2">
+                <div>
+                    <label>FireStationId</label>
+                    <input id="incStationId" placeholder="1" />
+                </div>
+                <div>
+                    <label>ShiftId (optional)</label>
+                    <input id="incShiftId" placeholder="" />
+                </div>
+            </div>
+
+            <div class="muted small">
+                Ако VehicleIds е празно, backend ще опита да вземе наличните от активната смяна.
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <div class="hint" id="newIncidentStatus"></div>
+            <button class="btn btn-primary" id="btnCreateIncident">Create</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: New Task -->
+<div class="modal-backdrop" id="modalTask">
+    <div class="modal">
+        <div class="modal-header">
+            <div>
+                <h2>Нова задача</h2>
+                <p class="muted">Създай задача към текущия инцидент.</p>
+            </div>
+            <button class="btn btn-ghost" id="btnCloseTask">✕</button>
+        </div>
+
+        <div class="modal-body">
+            <label>Title</label>
+            <input id="taskTitle" placeholder="Напр. Осигури цистерна вода" />
+            <label>Type</label>
+            <select id="taskType">
+                <option value="Operational">Operational</option>
+                <option value="Logistic">Logistic</option>
+                <option value="Administrative">Administrative</option>
+                <option value="Other">Other</option>
+            </select>
+            <label>Details</label>
+            <textarea id="taskDetails" rows="3" placeholder="Описание..."></textarea>
+
+            <div class="muted small">
+                За demo assignment не е задължителен (може да го добавим по-късно).
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <div class="hint" id="newTaskStatus"></div>
+            <button class="btn btn-primary" id="btnCreateTask">Create</button>
+        </div>
+    </div>
+</div>
+
+<!-- SignalR client -->
+<script src="https://cdn.jsdelivr.net/npm/@microsoft/signalr@8.0.6/dist/browser/signalr.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

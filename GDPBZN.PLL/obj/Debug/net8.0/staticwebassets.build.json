@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "W6XXNay7lcqxiQJPC7FsZejT8qg4IFlY+scWAzaYWMo=",
+  "Hash": "C3NMBM7j3LimSNkR+x4ea7jZmMTkDxh5yQv7w1u/T08=",
   "Source": "GDPBZN.PLL",
   "BasePath": "_content/GDPBZN.PLL",
   "Mode": "Default",
@@ -74,6 +74,25 @@
       "OriginalItemSpec": "wwwroot\\app.css"
     },
     {
+      "Identity": "C:\\Users\\admin\\RiderProjects\\GDPBZN\\GDPBZN.PLL\\wwwroot\\app.js",
+      "SourceId": "GDPBZN.PLL",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\admin\\RiderProjects\\GDPBZN\\GDPBZN.PLL\\wwwroot\\",
+      "BasePath": "_content/GDPBZN.PLL",
+      "RelativePath": "app.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\app.js"
+    },
+    {
       "Identity": "C:\\Users\\admin\\RiderProjects\\GDPBZN\\GDPBZN.PLL\\wwwroot\\bootstrap\\bootstrap.min.css",
       "SourceId": "GDPBZN.PLL",
       "SourceType": "Discovered",
@@ -129,6 +148,44 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.png"
+    },
+    {
+      "Identity": "C:\\Users\\admin\\RiderProjects\\GDPBZN\\GDPBZN.PLL\\wwwroot\\index.html",
+      "SourceId": "GDPBZN.PLL",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\admin\\RiderProjects\\GDPBZN\\GDPBZN.PLL\\wwwroot\\",
+      "BasePath": "_content/GDPBZN.PLL",
+      "RelativePath": "index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\index.html"
+    },
+    {
+      "Identity": "C:\\Users\\admin\\RiderProjects\\GDPBZN\\GDPBZN.PLL\\wwwroot\\styles.css",
+      "SourceId": "GDPBZN.PLL",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\admin\\RiderProjects\\GDPBZN\\GDPBZN.PLL\\wwwroot\\",
+      "BasePath": "_content/GDPBZN.PLL",
+      "RelativePath": "styles.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\styles.css"
     }
   ]
 }

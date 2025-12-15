@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GDPBZN.BLL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c723253d7ba2a96c3a01d9c080190bb1f32656ca")]
 [assembly: System.Reflection.AssemblyProductAttribute("GDPBZN.BLL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GDPBZN.BLL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
