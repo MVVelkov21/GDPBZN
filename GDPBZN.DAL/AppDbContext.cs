@@ -53,8 +53,7 @@ public class AppDbContext : DbContext
         b.Entity<IncidentUnitMember>()
             .HasIndex(x => new { x.IncidentUnitId, x.EmployeeId })
             .IsUnique();
-
-        // Templates seed
+        
         b.Entity<MessageTemplate>().HasData(
             new MessageTemplate { Id = 1, Title = "Пристигаме на място", Text = "Екипът пристигна на място. Започваме оценка на обстановката." },
             new MessageTemplate { Id = 2, Title = "Нуждаем се от вода", Text = "Нуждаем се от допълнителна цистерна с вода на локацията." },

@@ -10,7 +10,7 @@ public class Employee
     public FireStation FireStation { get; set; } = default!;
 
     [MaxLength(50)]
-    public string BadgeNumber { get; set; } = default!; // служебен номер
+    public string BadgeNumber { get; set; } = default!;
 
     [MaxLength(120)]
     public string FullName { get; set; } = default!;
@@ -20,8 +20,7 @@ public class Employee
 
     [MaxLength(120)]
     public string? Phone { get; set; }
-
-    // auth
+    
     [MaxLength(64)]
     public string Username { get; set; } = default!;
     [MaxLength(256)]

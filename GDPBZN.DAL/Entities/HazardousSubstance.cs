@@ -7,7 +7,7 @@ public class HazardousSubstance
     public int Id { get; set; }
 
     [MaxLength(80)]
-    public string UnNumber { get; set; } = default!; // UN 1203 etc.
+    public string UnNumber { get; set; } = default!;
 
     [MaxLength(200)]
     public string Name { get; set; } = default!;

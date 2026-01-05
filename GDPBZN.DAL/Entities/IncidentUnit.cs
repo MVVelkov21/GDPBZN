@@ -12,7 +12,7 @@ public class IncidentUnit
 
     public DateTime AssignedAtUtc { get; set; } = DateTime.UtcNow;
 
-    public bool IsAcknowledged { get; set; } // acknowledged от екипа (може и по-детайлно)
+    public bool IsAcknowledged { get; set; }
 
     public ICollection<IncidentUnitMember> Members { get; set; } = new List<IncidentUnitMember>();
 }

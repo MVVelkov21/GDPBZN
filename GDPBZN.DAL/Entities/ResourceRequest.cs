@@ -9,8 +9,7 @@ public class ResourceRequest
     public int IncidentId { get; set; }
     public Incident Incident { get; set; } = default!;
 
-    [MaxLength(200)]
-    public string ResourceName { get; set; } = default!; // напр. "Water tanker", "Fuel"
+    [MaxLength(200)] public string ResourceName { get; set; } = default!;
 
     [MaxLength(2000)]
     public string? Notes { get; set; }

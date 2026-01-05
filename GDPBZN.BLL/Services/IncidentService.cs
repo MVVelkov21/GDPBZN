@@ -100,8 +100,7 @@ public class IncidentService : IIncidentService
 
         _db.Incidents.Add(incident);
         await _db.SaveChangesAsync(ct);
-
-        // Determine vehicleIds
+        
         var vehicleIds = req.VehicleIds ?? new List<int>();
 
         if (vehicleIds.Count == 0)
@@ -131,8 +130,7 @@ public class IncidentService : IIncidentService
                 vehicleIds = activeAssignments.Select(a => a.VehicleId).Distinct().ToList();
             }
         }
-
-        // Add units + members
+        
         foreach (var vid in vehicleIds.Distinct())
         {
             var unit = new IncidentUnit

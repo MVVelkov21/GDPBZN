@@ -1,9 +1,4 @@
-﻿/* ============================
-   GDPBZN • Operative Center UI
-   Robust client for backend DTO mismatches
-   ============================ */
-
-let token = null;
+﻿let token = null;
 let user = null;
 let hub = null;
 
@@ -75,10 +70,6 @@ function showModal(id, show) {
 }
 
 /* ---------- enum mappings (int) ---------- */
-/**
- * NOTE: adjust numbers if your server enum differs.
- * Common default is 0..N in declaration order.
- */
 const INCIDENT_TYPE = {
     Fire: 0,
     Rescue: 1,
@@ -121,9 +112,7 @@ function errorText(e) {
     if (!b) return e?.message || "Unknown error";
 
     if (typeof b === "string") return b;
-
-    // ASP.NET validation problem details pattern:
-    // { title, status, errors: { field: [msg...] } }
+    
     if (b.errors && typeof b.errors === "object") {
         const lines = [];
         for (const [k, arr] of Object.entries(b.errors)) {
@@ -146,35 +135,23 @@ function looksLikeEnumConversionIssue(e) {
     return t.includes("could not be converted") && (t.includes("$.type") || t.includes("$.status"));
 }
 
-/**
- * Robust POST:
- * - tries body as-is
- * - if server expects { req: ... }, retries with wrapper
- */
 async function postRobust(path, payload) {
     try {
         return await apiRaw(path, { method: "POST", body: JSON.stringify(payload) });
     } catch (e1) {
         if (e1.status === 400 && (looksLikeReqWrapperNeeded(e1))) {
-            // retry with { req: payload }
             return await apiRaw(path, { method: "POST", body: JSON.stringify({ req: payload }) });
         }
-        // some backends do opposite: they expect direct body but we sent wrapper elsewhere
         throw e1;
     }
 }
 
-/**
- * Robust POST that can also try enum as string if int fails (rare)
- */
 async function postRobustEnum(path, payload, enumFieldsAsStringFallback = false) {
     try {
         return await postRobust(path, payload);
     } catch (e1) {
-        // If enum conversion error and fallback enabled, convert enum ints to strings if possible
         if (e1.status === 400 && looksLikeEnumConversionIssue(e1) && enumFieldsAsStringFallback) {
             const clone = JSON.parse(JSON.stringify(payload));
-            // try to map ints back to names for known fields
             if (typeof clone.type === "number") {
                 const name = Object.keys(INCIDENT_TYPE).find(k => INCIDENT_TYPE[k] === clone.type);
                 if (name) clone.type = name;
@@ -300,8 +277,6 @@ function renderDetails(d) {
         kvRow("Address", d.addressText) +
         kvRow("Coords", `${d.lat ?? "—"}, ${d.lng ?? "—"}`) +
         kvRow("Description", d.description ?? "—");
-
-    // Units
     const units = $("units");
     units.innerHTML = "";
     if (!d.units?.length) units.innerHTML = `<div class="empty">Няма екипи.</div>`;
@@ -317,8 +292,6 @@ function renderDetails(d) {
             units.appendChild(chip);
         }
     }
-
-    // Hazards
     const hz = $("hazards");
     hz.innerHTML = "";
     if (!d.hazards?.length) hz.innerHTML = `<div class="empty">Няма опасни вещества.</div>`;
@@ -330,8 +303,6 @@ function renderDetails(d) {
             hz.appendChild(chip);
         }
     }
-
-    // Resources
     const res = $("resources");
     res.innerHTML = "";
     if (!d.resources?.length) res.innerHTML = `<div class="empty">Няма ресурсни заявки.</div>`;
@@ -344,8 +315,6 @@ function renderDetails(d) {
             res.appendChild(el);
         }
     }
-
-    // Annotations
     const ann = $("annotations");
     ann.innerHTML = "";
     if (!d.annotations?.length) ann.innerHTML = `<div class="empty">Няма анотации.</div>`;
@@ -396,14 +365,12 @@ async function startHub() {
     hub.onreconnecting(() => setConn("warn", "Reconnecting..."));
     hub.onreconnected(() => setConn("ok", "Online"));
     hub.onclose(() => { setConn("danger", "Offline"); hub = null; });
-
-    // minimal events
+    
     hub.on("incident.created", async () => { try { await loadIncidents(); } catch {} });
     hub.on("task.created", async (p) => { if (p?.incidentId === selectedIncidentId) { try { await selectIncident(selectedIncidentId); } catch {} } });
     hub.on("unit.ack", async (p) => { if (p?.incidentId === selectedIncidentId) { try { await selectIncident(selectedIncidentId); } catch {} } });
     hub.on("chat.new", async (p) => {
         if (p?.incidentId === selectedIncidentId) {
-            // append quickly
             const log = $("chatLog");
             if (log.querySelector(".empty")) log.innerHTML = "";
             const el = document.createElement("div");
@@ -428,7 +395,7 @@ async function startHub() {
     }
 }
 
-/* ---------- LOGIN (robust) ---------- */
+/* ---------- LOGIN ---------- */
 async function login() {
     setHint("loginStatus", "Logging in...");
     try {
@@ -439,8 +406,7 @@ async function login() {
                 password: $("password").value
             })
         });
-
-        // token field variants
+        
         token = res?.token ?? res?.accessToken ?? res?.jwt ?? res?.bearerToken ?? res?.access_token ?? null;
         if (!token) throw new Error("Login response missing token (token/accessToken/jwt).");
 
@@ -473,7 +439,7 @@ async function login() {
     }
 }
 
-/* ---------- Create Incident (robust) ---------- */
+/* ---------- Create Incident ---------- */
 async function createIncident() {
     setHint("newIncidentStatus", "Creating...");
     try {
@@ -482,7 +448,6 @@ async function createIncident() {
 
         const typeName = $("incType").value;
         const payload = {
-            // send int by default (most DTOs use enum)
             type: INCIDENT_TYPE[typeName] ?? 0,
             addressText: $("incAddress").value.trim(),
             lat: lat ? Number(lat) : null,
@@ -493,8 +458,7 @@ async function createIncident() {
             shiftId: $("incShiftId").value.trim() ? Number($("incShiftId").value.trim()) : null,
             vehicleIds: null
         };
-
-        // try robust create; if enum conversion errors and server expects string, enable fallback
+        
         const res = await postRobustEnum("/api/incidents", payload, true);
 
         const id = res?.incidentId ?? res?.id ?? res;
@@ -508,7 +472,7 @@ async function createIncident() {
     }
 }
 
-/* ---------- Create Task (robust) ---------- */
+/* ---------- Create Task ---------- */
 async function createTask() {
     if (!selectedIncidentId) return;
     setHint("newTaskStatus", "Creating...");
@@ -537,7 +501,7 @@ async function createTask() {
     }
 }
 
-/* ---------- Send Chat (robust) ---------- */
+/* ---------- Send Chat ---------- */
 async function sendChat() {
     if (!selectedIncidentId) return;
     const text = $("chatText").value.trim();
@@ -558,9 +522,6 @@ async function sendChat() {
     }
 }
 
-/* ============================
-   Wiring
-   ============================ */
 document.querySelectorAll(".tab").forEach(t => {
     t.addEventListener("click", () => {
         const tabName = t.dataset.tab;
@@ -623,7 +584,6 @@ $("btnCreateTask").addEventListener("click", createTask);
 
 $("btnSendChat").addEventListener("click", sendChat);
 
-// initial
 enableAuthedUI(false);
 setConn("danger", "Offline");
 clearDetails();

@@ -24,7 +24,7 @@ public class AuthService : IAuthService
 
         if (!_hasher.Verify(req.Password, u.PasswordHash)) return null;
 
-        var role = u.Rank; // ползвай Rank като роля за demo
+        var role = u.Rank;
         var token = _tokenService.CreateToken(u.Id, u.FullName, role);
 
         return new LoginResponse(token, u.Id, u.FullName, role);

@@ -20,7 +20,7 @@ public class Incident
     public string? Description { get; set; }
 
     [MaxLength(80)]
-    public string SourceChannel { get; set; } = "112"; // 112 / manual / other
+    public string SourceChannel { get; set; } = "112";
 
     public ICollection<IncidentUnit> Units { get; set; } = new List<IncidentUnit>();
     public ICollection<IncidentTask> Tasks { get; set; } = new List<IncidentTask>();

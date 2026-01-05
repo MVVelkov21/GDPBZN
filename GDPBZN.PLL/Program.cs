@@ -14,23 +14,18 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// DB
 builder.Services.AddDbContext<AppDbContext>(opt =>
     opt.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
 
-// BLL services
 builder.Services.AddSingleton<PasswordHasher>();
 builder.Services.AddScoped<TokenService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IIncidentService, IncidentService>();
 
-// ✅ notifier implementation lives in PLL, interface lives in BLL
 builder.Services.AddScoped<IIncidentNotifier, SignalRIncidentNotifier>();
 
-// SignalR
 builder.Services.AddSignalR();
 
-// JWT
 var key = builder.Configuration["Jwt:Key"] ?? throw new InvalidOperationException("Jwt:Key missing");
 var issuer = builder.Configuration["Jwt:Issuer"] ?? "gdpbzn-api";
 var audience = builder.Configuration["Jwt:Audience"] ?? "gdpbzn-app";
@@ -50,8 +45,7 @@ builder.Services
             IssuerSigningKey = signingKey,
             ValidateLifetime = true
         };
-
-        // SignalR token support: /hubs/incident?access_token=...
+        
         opt.Events = new JwtBearerEvents
         {
             OnMessageReceived = ctx =>

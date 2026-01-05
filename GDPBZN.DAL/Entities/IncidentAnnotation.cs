@@ -8,12 +8,10 @@ public class IncidentAnnotation
 
     public int IncidentId { get; set; }
     public Incident Incident { get; set; } = default!;
-
-    // тип: "fire_front", "wind_dir", "note_pin" и т.н.
+    
     [MaxLength(40)]
     public string Kind { get; set; } = "note_pin";
-
-    // GeoJSON-ish (за простота като string)
+    
     [MaxLength(8000)]
     public string GeometryJson { get; set; } = default!;
 

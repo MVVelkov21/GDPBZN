@@ -5,7 +5,6 @@ namespace GDPBZN.BLL.Services;
 
 public class PasswordHasher
 {
-    // Simple demo hash (за продукция: BCrypt/Argon2)
     public string Hash(string password)
     {
         using var sha = SHA256.Create();

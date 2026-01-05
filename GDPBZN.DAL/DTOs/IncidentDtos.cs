@@ -12,7 +12,7 @@ public record CreateIncidentRequest(
     string SourceChannel,
     int FireStationId,
     int? ShiftId,
-    List<int>? VehicleIds // ако е null -> взима налични от активната смяна
+    List<int>? VehicleIds
 );
 
 public record IncidentListItem(

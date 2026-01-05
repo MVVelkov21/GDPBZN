@@ -7,8 +7,7 @@ public class FireStation
     public int Id { get; set; }
 
     [MaxLength(32)]
-    public string Code { get; set; } = default!; // напр. "SOF-01"
-
+    public string Code { get; set; } = default!; 
     [MaxLength(200)]
     public string Name { get; set; } = default!;
 
